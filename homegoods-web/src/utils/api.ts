@@ -8,15 +8,15 @@ const api = axios.create({
 // Dummy data for fallback
 const dummyProducts: Product[] = [
   {
-    id: '1',
+    id: 1,
     name: 'Modern Sofa'
   },
   {
-    id: '2',
+    id: 2,
     name: 'Dining Table'
   },
   {
-    id: '3',
+    id: 3,
     name: 'Table Lamp'
   }
 ];
@@ -26,7 +26,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
     const response = await api.get('/api/products');
     return response.data;
   } catch (error) {
-    console.warn('Failed to fetch products from API, falling back to dummy data');
+    console.warn('Failed to fetch products from API, falling back to dummy data:', error);
     return dummyProducts;
   }
 }; 
