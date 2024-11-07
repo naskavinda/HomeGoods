@@ -29,4 +29,9 @@ export const fetchProducts = async (): Promise<Product[]> => {
     console.warn('Failed to fetch products from API, falling back to dummy data:', error);
     return dummyProducts;
   }
+};
+
+export const createProduct = async (product: { name: string }): Promise<Product> => {
+  const response = await axios.post('/api/products', product);
+  return response.data;
 }; 
